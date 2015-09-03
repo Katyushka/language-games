@@ -1,7 +1,7 @@
 package hello;
 
 /**
- * Created by пользователь on 02.09.2015.
+ * Created by РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ on 02.09.2015.
  */
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

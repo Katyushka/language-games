@@ -1,7 +1,7 @@
 package hello;
 
 /**
- * Created by пользователь on 02.09.2015.
+ * Created by РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ on 02.09.2015.
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +20,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                //.formLogin()
+                //.loginPage("/login")
+               // .permitAll()
+               // .and()
+              //  .logout()
+               // .permitAll();
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/login?logout")
                 .permitAll();
     }
 

@@ -1,7 +1,7 @@
 package hello;
 
 /**
- * Created by пользователь on 24.08.2015.
+ * Created by РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ on 24.08.2015.
  */
 
 import java.util.Arrays;
