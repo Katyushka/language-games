@@ -1,40 +1,48 @@
-group 'com.language-games'
-version '1.0-SNAPSHOT'
-
 buildscript {
+    ext {
+        springBootVersion = '1.2.5.RELEASE'
+        springLoadedVersion = '1.2.4.RELEASE'
+    }
     repositories {
+        mavenLocal()
         mavenCentral()
+        maven { url "http://repo.spring.io/libs-release" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework:springloaded:${springLoadedVersion}")
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-
-jar {
-    baseName = 'language-games'
-    version =  '0.1.0'
-}
-
-
 repositories {
+    mavenLocal()
     mavenCentral()
 }
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter")
+    compile('org.springframework.boot:spring-boot-starter-security');
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
-
-
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
+}
+
+jar {
+    baseName = 'language-games'
+    version = '0.1.0'
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
 }
